@@ -1,3 +1,5 @@
 interface IGenAIService {
-    analyzeJournalEntry(content: string): Promise<any>;
+    generateContent(content: string): Promise<any>;
 }
+
+export default IGenAIService;

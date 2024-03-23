@@ -1,11 +1,12 @@
 import GeminiService from  './Services/GeminiService';
+import GeminiOAuthService from './Services/GeminiOAuthService';
+import IGenAIService from './Interfaces/IGenAIService';
 
-async function main () {
-    const key = process.env.GOOGLE_GENAI_KEY;
-    const geminiService = new GeminiService(key); 
-    const prompt = "Testing out inputting a journal entry"
-    const response = await geminiService.analyzeJournalEntry(prompt);
+async function main (genAIService: IGenAIService) {
+    const prompt = "Good Morning Buddy!"
+    const response = await genAIService.generateContent(prompt);
     console.log(response);
 }
 
-main().catch(console.error);
+const genAIService = new GeminiOAuthService();
+main(genAIService).catch(console.error);
