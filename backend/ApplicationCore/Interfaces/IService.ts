@@ -1,1 +1,2 @@
-export abstract class Service {}
+interface IService{}
+export default IService;
