@@ -1,5 +1,5 @@
 interface IGenAIConnector {
-    generateContent(content: string): Promise<any>;
+    sendMessage(content: string): Promise<any>;
 }
 
 export default IGenAIConnector;
