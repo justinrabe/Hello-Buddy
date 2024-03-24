@@ -1,12 +1,10 @@
-import GeminiService from  './Services/GeminiService';
-import GeminiOAuthService from './Services/GeminiOAuthService';
-import IGenAIService from './Interfaces/IGenAIService';
+import VertexConnector from '../Infrastructure/Connectors/VertexConnector';
+import IGenAIConnector from '../Infrastructure/Interfaces/IGenAIConnector';
 
-async function main (genAIService: IGenAIService) {
-    const prompt = "Good Morning Buddy!"
-    const response = await genAIService.generateContent(prompt);
-    console.log(response);
+async function main (genAIConnector: IGenAIConnector) {
+    const prompt = "Good Morning Buddy!";
+    const response = await genAIConnector.generateContent(prompt);
 }
 
-const genAIService = new GeminiOAuthService();
-main(genAIService).catch(console.error);
+const genAIConnector= new VertexConnector();
+main(genAIConnector).catch(console.error);
