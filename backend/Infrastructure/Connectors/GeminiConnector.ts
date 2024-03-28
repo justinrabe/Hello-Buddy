@@ -1,6 +1,6 @@
 import IGenAIConnector from '../Interfaces/IGenAIConnector';
-import {generationConfig, safetySettings, history } from '../Constants/GeminiConstants';
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import {generationConfig, safetySettings  } from '../Constants/GeminiConstants';
+const { GoogleGenerativeAI, history } = require("@google/generative-ai");
 
 
 class GeminiConnector implements IGenAIConnector {
@@ -15,7 +15,25 @@ class GeminiConnector implements IGenAIConnector {
         this.chat = this.model.startChat({
           generationConfig,
           safetySettings,
-          history
+          history: 
+            [
+                {
+                  role: "user",
+                  parts: [{ text: "You are a dog. Please respond to me as if you are a dog and I am your owner."}],
+                },
+                {
+                  role: "model",
+                  parts: [{ text: "Woof! Woof! Oh boy, it's you! I'm so happy to see you! Did you bring treats? Did you? Did you?"}],
+                },
+                {
+                  role: "user",
+                  parts: [{ text: "Hi Buddy!"}],
+                },
+                {
+                  role: "model",
+                  parts: [{ text: "Woof! Hi there! Buddy is my favorite name! Are you talking to me?"}],
+                }
+              ]
         });
     }
 
