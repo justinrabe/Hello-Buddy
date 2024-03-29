@@ -1,6 +1,7 @@
 export interface IRepository<T> {
-    saveMessage(entity: T): Promise<void>;
-    getMessageById(id: string): Promise<T | null>;
+    create(entity: T): Promise<T>;
+    getById(id: number): Promise<T | null>;
     getAll(): Promise<T[]>;
-    delete(id: string): Promise<void>;
+    update(id: number, entity: T): Promise<void>;
+    delete(id: number): Promise<void>;
 }
