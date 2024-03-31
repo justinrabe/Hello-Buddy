@@ -1,5 +1,4 @@
 import IGenAIConnector from '../Infrastructure/Interfaces/IGenAIConnector';
-import GeminiConnector from '../Infrastructure/Connectors/GeminiConnector';
 import ChatService from '../ApplicationCore/Services/ChatService';
 
 class ApplicationCore {
