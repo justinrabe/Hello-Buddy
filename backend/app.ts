@@ -5,7 +5,7 @@ import AppCore from './ApplicationCore/AppCore';
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 const genAIConnector = new GeminiConnector();
 const appCore = new AppCore(genAIConnector);
 
@@ -26,8 +26,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err);
     res.status(500).json({ error: err.message });
 });
-
-app.use(cors());
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
