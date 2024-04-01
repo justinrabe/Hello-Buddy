@@ -17,7 +17,7 @@ const Chat = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-            <div style={{ overflowY: 'auto', flexGrow: 1 }}>
+            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column-reverse' }}>
                 {messages.map((msg, index) => (
                     <div key={index} style={{ textAlign: msg.type === 'sent' ? 'right' : 'left' }}>
                         <div style={{
