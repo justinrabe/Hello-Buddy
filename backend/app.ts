@@ -9,6 +9,8 @@ app.use(cors());
 const genAIConnector = new GeminiConnector();
 const appCore = new AppCore(genAIConnector);
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 app.post('/message', async (req, res, next) => {
     try {
         const prompt = req.body.prompt;
