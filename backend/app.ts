@@ -9,7 +9,7 @@ app.use(cors());
 const genAIConnector = new GeminiConnector();
 const appCore = new AppCore(genAIConnector);
 const port = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => res.send("Hello-Buddy backend is running!"));
 
 app.post('/message', async (req, res, next) => {
     try {
