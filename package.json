@@ -1,7 +1,6 @@
 {
     "scripts": {
       "heroku-prebuild": "cd backend && npm install",
-      "build": "tsc",
       "start": "cd backend && node App.js"
     }
   }
