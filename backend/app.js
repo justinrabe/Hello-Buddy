@@ -12,6 +12,8 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 const genAIConnector = new GeminiConnector_1.default();
 const appCore = new AppCore_1.default(genAIConnector);
+const port = process.env.PORT || 3000;
+app.get("/", (req, res) => res.send("Express on Vercel"));
 app.post('/message', async (req, res, next) => {
     try {
         const prompt = req.body.prompt;
@@ -29,6 +31,6 @@ app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: err.message });
 });
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is running on port 3000');
 });
