@@ -4,7 +4,7 @@ import axios from 'axios';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const helloBuddyUrl = process.env.HELLO_BUDDY_URL || 'http://localhost:3000/hello-buddy';
+    const helloBuddyUrl = process.env.HELLO_BUDDY_URL;
 
     const sendMessage = async () => {
         try {
