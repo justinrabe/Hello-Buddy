@@ -4,10 +4,11 @@ import axios from 'axios';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const helloBuddyUrl = process.env.HELLO_BUDDY_URL || 'http://localhost:3000/hello-buddy';
 
     const sendMessage = async () => {
         try {
-            const res = await axios.post('http://localhost:3000/message', { prompt: message });
+            const res = await axios.post(helloBuddyUrl, { prompt: message });
             setMessages([...messages, { type: 'sent', content: message }, { type: 'received', content: res.data }]);
             setMessage('');
         } catch (error) {
