@@ -8,11 +8,13 @@ const Chat = () => {
 
     const sendMessage = async () => {
         try {
+            console.log(`Sending message: ${message}`);
             const res = await axios.post(helloBuddyUrl, { prompt: message });
+            console.log(`Received response: ${res.data}`);
             setMessages([...messages, { type: 'sent', content: message }, { type: 'received', content: res.data }]);
             setMessage('');
         } catch (error) {
-            console.error(error);
+            console.error(`Error sending message: ${error}`);
         }
     };
 
