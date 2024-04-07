@@ -6,7 +6,9 @@ const Message = ({ msg }) => (
             borderRadius: '10px',
             margin: '5px',
             background: msg.type === 'sent' ? '#0084ff' : '#f0f0f0',
-            color: msg.type === 'sent' ? 'white' : 'black'
+            color: msg.type === 'sent' ? 'white' : 'black',
+            wordWrap: 'break-word',
+            maxWidth: '50%'
         }}>
             {msg.content}
         </div>

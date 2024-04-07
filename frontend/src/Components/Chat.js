@@ -22,7 +22,9 @@ const Chat = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <div style={{ 
+            display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '749977' 
+            }}>
             <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column-reverse' }}>
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} />
