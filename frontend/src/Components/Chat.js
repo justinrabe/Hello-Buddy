@@ -7,12 +7,15 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const helloBuddyUrl = process.env.REACT_APP_HELLO_BUDDY_URL;
     const sendMessage = async () => {
+        if (!message) return;
+        setMessages(prevMessages => [...prevMessages, { type: 'sent', content: message }]);
         setMessage('Sending...');
         try {
             console.log(`Sending message: ${message}`);
             const res = await axios.post(helloBuddyUrl, { prompt: message });
             console.log(`Received response: ${res.data}`);
-            setMessages([...messages, { type: 'sent', content: message }, { type: 'received', content: res.data }]);
+            const data = await res.data;
+            setMessages(prevMessages => [...prevMessages, { type: 'received', content: data }]);
             setMessage('');
         } catch (error) {
             console.error(`Error sending message: ${error}`);
@@ -24,7 +27,7 @@ const Chat = () => {
         <div style={{ 
             display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#749977' 
             }}>
-            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column-reverse', backgroundColor: '#749977'  }}>
+            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#749977'  }}>
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} />
                 ))}
