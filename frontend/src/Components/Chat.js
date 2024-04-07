@@ -6,7 +6,7 @@ const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const helloBuddyUrl = process.env.HELLO_BUDDY_URL;
-
+    console.log(`Hello Buddy URL: ${helloBuddyUrl}`);
     const sendMessage = async () => {
         setMessage('Sending...');
         try {
