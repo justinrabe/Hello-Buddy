@@ -23,14 +23,14 @@ const Chat = () => {
 
     return (
         <div style={{ 
-            display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '749977' 
+            display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#749977' 
             }}>
-            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column-reverse' }}>
+            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column-reverse', backgroundColor: '#749977'  }}>
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} />
                 ))}
             </div>
-            <div style={{ display: 'flex', padding: '10px' }}>
+            <div style={{ display: 'flex', padding: '10px', backgroundColor: '#749977'  }}>
                 <input 
                     type="text" 
                     value={message} 
