@@ -11,5 +11,8 @@ class ApplicationCore {
     async sendMessage(prompt) {
         return this.chatService.sendMessage(prompt);
     }
+    async startChat(persona) {
+        return this.chatService.startChat(persona);
+    }
 }
 exports.default = ApplicationCore;
