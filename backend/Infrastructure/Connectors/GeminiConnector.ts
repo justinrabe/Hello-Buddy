@@ -15,12 +15,13 @@ class GeminiConnector implements IGenAIConnector {
 
     async startChat(persona: string): Promise<any> {
         const selectedPersona = personas.find(p => p.name === persona);
+        const selectedPersonaHistory = selectedPersona?.history;
         if (selectedPersona) {
           //convert selectedPersona.history to json
           this.chat = this.model.startChat({
             generationConfig,
             safetySettings,
-            selectedPersona
+            history: selectedPersonaHistory
           });
         }
     } 

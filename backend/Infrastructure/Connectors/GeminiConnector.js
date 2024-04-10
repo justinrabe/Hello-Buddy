@@ -10,15 +10,13 @@ class GeminiConnector {
     }
     async startChat(persona) {
         const selectedPersona = Personas_1.personas.find(p => p.name === persona);
+        const selectedPersonaHistory = selectedPersona === null || selectedPersona === void 0 ? void 0 : selectedPersona.history;
         if (selectedPersona) {
-            console.log(selectedPersona.history);
             //convert selectedPersona.history to json
-            const historyJson = JSON.stringify(selectedPersona.history);
-            console.log(historyJson);
             this.chat = this.model.startChat({
                 generationConfig: GeminiConstants_1.generationConfig,
                 safetySettings: GeminiConstants_1.safetySettings,
-                selectedPersona
+                history: selectedPersonaHistory
             });
         }
     }
