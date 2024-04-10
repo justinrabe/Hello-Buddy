@@ -17,7 +17,10 @@ var salt2 = bcrypt.genSaltSync();
 var secret = bcrypt.hashSync(salt1 + salt2, 10);
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3001',
+    credentials: true
+}));
 app.use(session({
     secret: secret,
     resave: false,
