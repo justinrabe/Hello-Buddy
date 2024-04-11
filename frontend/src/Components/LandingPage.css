@@ -1,6 +1,12 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
 .landing-page {
     background-color: #E0D6C2;
-    ;
+    height: auto;
+    align-items: flex-start;
 }
 
 .landing-page button {

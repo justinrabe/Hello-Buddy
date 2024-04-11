@@ -27,8 +27,19 @@ const LandingPage = () => {
     return (
         <div className="landing-page">
             {personas.map((persona, index) => (
-                <button key={index} onClick={() => startChat(persona)}>
-                    <img src={`http://localhost:3001/images/${persona}_Profile_Default.png`} alt={persona} />
+                <button
+                    key={index}
+                    onMouseEnter={() => setActiveButton(persona)}
+                    onMouseLeave={() => setActiveButton(null)}
+                    onClick={() => {
+                        setActiveButton(persona);
+                        startChat(persona);
+                    }}
+                >
+                    <img
+                        src={`http://localhost:3001/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
+                        alt={persona}
+                    />
                 </button>
             ))}
             <Link to="/chat"></Link>
