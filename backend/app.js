@@ -13,10 +13,11 @@ const appCores = {};
 var salt1 = bcrypt_1.default.genSaltSync();
 var salt2 = bcrypt_1.default.genSaltSync();
 var secret = bcrypt_1.default.hashSync(salt1 + salt2, 10);
+const helloBuddyFrontEndUrl = process.env.HELLO_BUDDY_FRONTEND_URL || 'http://localhost:3001';
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:3001',
+    origin: helloBuddyFrontEndUrl,
     credentials: true
 }));
 app.use((0, express_session_1.default)({
