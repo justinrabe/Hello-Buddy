@@ -6,7 +6,8 @@ const LandingPage = () => {
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
     const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
-    const helloBuddyFrontendUrl = process.env.REACT_APP_HELLO_BUDDY_FRONTEND_URL || 'http://localhost:3001';
+    const helloBuddyFrontendUrl = process.env.PUBLIC_URL || 'http://localhost:3001';
+    console.log(`Hello Buddy frontend URL: ${helloBuddyFrontendUrl}`)
     const startHelloBuddy = helloBuddyBackendUrl + '/start';
     const [activeButton, setActiveButton] = useState(null);
     console.log(`Start Hello Buddy URL: ${startHelloBuddy}`);
@@ -38,7 +39,7 @@ const LandingPage = () => {
                     }}
                 >
                     <img
-                        src={`${helloBuddyFrontendUrl}/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
+                        src={`${process.env.PUBLIC_URL}/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
                         alt={persona}
                     />
                 </button>
