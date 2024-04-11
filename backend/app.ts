@@ -15,7 +15,7 @@ const appCores : { [key: string]: AppCore } = {};
 var salt1 = bcrypt.genSaltSync();
 var salt2 = bcrypt.genSaltSync();
 var secret = bcrypt.hashSync(salt1 + salt2, 10);
-const helloBuddyFrontEndUrl = process.env.HELLO_BUDDY_FRONTEND_URL || 'http://localhost:3001';
+const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
 const app = express();
 app.use(express.json());
 app.use(cors({
