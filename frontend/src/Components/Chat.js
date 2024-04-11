@@ -5,9 +5,8 @@ import SendMessageButton from './SendMessage';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const helloBuddyUrl = 'http://localhost:3000';
-    const helloBuggyMessageUrl = helloBuddyUrl + '/message';
-    console.log(`Hello Buddy URL: ${helloBuddyUrl}`);
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
+    const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
     console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
     const sendMessage = async () => {
         if (!message) return;

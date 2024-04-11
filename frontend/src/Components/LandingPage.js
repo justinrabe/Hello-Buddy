@@ -5,8 +5,9 @@ import './LandingPage.css';
 const LandingPage = () => {
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
-    const helloBuddyUrl = 'http://localhost:3000';
-    const startHelloBuddy = helloBuddyUrl + '/start';
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
+    const helloBuddyFrontendUrl = process.env.REACT_APP_HELLO_BUDDY_FRONTEND_URL || 'http://localhost:3001';
+    const startHelloBuddy = helloBuddyBackendUrl + '/start';
     const [activeButton, setActiveButton] = useState(null);
     console.log(`Start Hello Buddy URL: ${startHelloBuddy}`);
     const startChat = async (p) => {
@@ -37,7 +38,7 @@ const LandingPage = () => {
                     }}
                 >
                     <img
-                        src={`http://localhost:3001/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
+                        src={`${helloBuddyFrontendUrl}/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
                         alt={persona}
                     />
                 </button>
