@@ -11,6 +11,10 @@ class ApplicationCore {
     public async sendMessage(prompt: string) {
         return this.chatService.sendMessage(prompt);
     }
+
+    public async startChat(persona: string) {
+        return this.chatService.startChat(persona);
+    }
 }
 
 export default ApplicationCore;

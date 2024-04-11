@@ -5,14 +5,16 @@ import SendMessageButton from './SendMessage';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const helloBuddyUrl = process.env.REACT_APP_HELLO_BUDDY_URL;
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
+    const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
+    console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
     const sendMessage = async () => {
         if (!message) return;
         setMessages(prevMessages => [...prevMessages, { type: 'sent', content: message }]);
         setMessage('Sending...');
         try {
             console.log(`Sending message: ${message}`);
-            const res = await axios.post(helloBuddyUrl, { prompt: message });
+            const res = await axios.post(helloBuggyMessageUrl, { prompt: message },{ withCredentials: true });
             console.log(`Received response: ${res.data}`);
             const data = await res.data;
             setMessages(prevMessages => [...prevMessages, { type: 'received', content: data }]);

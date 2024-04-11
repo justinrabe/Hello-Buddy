@@ -1,15 +1,63 @@
 import express, { Request, Response, NextFunction } from 'express';
+import session from 'express-session';
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 import GeminiConnector from './Infrastructure/Connectors/GeminiConnector';
 import AppCore from './ApplicationCore/AppCore';
 
+declare module 'express-session' {
+    export interface SessionData {
+      persona?: string;
+    }
+  }
+
+const appCores : { [key: string]: AppCore } = {};
+var salt1 = bcrypt.genSaltSync();
+var salt2 = bcrypt.genSaltSync();
+var secret = bcrypt.hashSync(salt1 + salt2, 10);
+const helloBuddyFrontEndUrl = process.env.HELLO_BUDDY_FRONTEND_URL || 'http://localhost:3001';
 const app = express();
 app.use(express.json());
-app.use(cors());
-const genAIConnector = new GeminiConnector();
-const appCore = new AppCore(genAIConnector);
+app.use(cors({
+    origin: helloBuddyFrontEndUrl,
+    credentials: true
+}));
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
 const port = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Hello-Buddy backend is running!"));
+
+app.post('/start', async (req, res, next) => {
+
+    console.log("Session: ", req.sessionID);
+    try {
+        const persona = req.body.persona;
+        if (!persona) {
+            throw new Error('Persona is required');
+        }
+
+        if (appCores[req.sessionID]) {
+            res.status(400).json({ error: 'Chat already started.' });
+            return;
+        }
+        const appCore = new AppCore(new GeminiConnector());
+        await appCore.startChat(persona);
+
+        req.session.persona = persona;
+        appCores[req.sessionID] = appCore;
+
+        res.json({ message: 'Chat started' });
+        console.log("Chat started with persona: ", persona);
+    }
+    catch (err) {
+        next(err);
+    }
+});
 
 app.post('/message', async (req, res, next) => {
     try {
@@ -17,11 +65,25 @@ app.post('/message', async (req, res, next) => {
         if (!prompt) {
             throw new Error('Prompt is required');
         }
-        const response = await appCore.sendMessage(prompt);
+        console.log("Session: ", req.sessionID);
+        if (!appCores[req.sessionID]) {
+            res.status(400).json({ error: 'Chat needs to be started before messaging.' });
+            return;
+        }
+        
+        const response = await appCores[req.sessionID].sendMessage(prompt);
         res.json(response);
     } catch (err) {
         next(err);
     }
+});
+
+app.get('/appInfo', (req, res) => {
+    console.log("Session: ", req.sessionID);
+    console.log("Persona: ", req.session.persona);
+    console.log("Current number of sessions running", Object.keys(appCores).length);
+
+    res.json({ persona: req.session.persona, sessions: Object.keys(appCores).length });
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

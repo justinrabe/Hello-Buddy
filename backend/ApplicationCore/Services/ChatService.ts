@@ -7,6 +7,10 @@ export class ChatService implements IService {
         this.genAIConnector = genAIConnector;
     }
 
+    async startChat(persona: string): Promise<any> {
+        return await this.genAIConnector.startChat(persona);
+    }
+
     async sendMessage(content: string): Promise<any> {
         return await this.genAIConnector.sendMessage(content);
     }
