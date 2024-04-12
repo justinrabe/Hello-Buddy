@@ -9,7 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const GeminiConnector_1 = __importDefault(require("./Infrastructure/Connectors/GeminiConnector"));
 const AppCore_1 = __importDefault(require("./ApplicationCore/AppCore"));
-const appCores = {};
+var appCores = {};
 var salt1 = bcrypt_1.default.genSaltSync();
 var salt2 = bcrypt_1.default.genSaltSync();
 var secret = bcrypt_1.default.hashSync(salt1 + salt2, 10);
@@ -67,6 +67,10 @@ app.post('/message', async (req, res, next) => {
     catch (err) {
         next(err);
     }
+});
+app.post('/purge', (req, res) => {
+    appCores = {};
+    res.json({ message: 'All chats purged' });
 });
 app.get('/appInfo', (req, res) => {
     console.log("Session: ", req.sessionID);

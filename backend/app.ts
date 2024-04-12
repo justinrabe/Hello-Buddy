@@ -11,7 +11,7 @@ declare module 'express-session' {
     }
   }
 
-const appCores : { [key: string]: AppCore } = {};
+var appCores : { [key: string]: AppCore } = {};
 var salt1 = bcrypt.genSaltSync();
 var salt2 = bcrypt.genSaltSync();
 var secret = bcrypt.hashSync(salt1 + salt2, 10);
@@ -76,6 +76,11 @@ app.post('/message', async (req, res, next) => {
     } catch (err) {
         next(err);
     }
+});
+
+app.post('/purge', (req, res) => {
+    appCores = {};
+    res.json({ message: 'All chats purged' });
 });
 
 app.get('/appInfo', (req, res) => {
