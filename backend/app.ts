@@ -26,7 +26,11 @@ app.use(session({
     secret: secret,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'none', // set to 'none' if your site is under a different domain
+        domain: 'your-site.com' // replace with your site's domain
+    }
 }));
 
 const port = process.env.PORT || 3000;
