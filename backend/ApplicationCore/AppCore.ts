@@ -1,9 +1,7 @@
 import IGenAIConnector from '../Infrastructure/Interfaces/IGenAIConnector';
 import ChatService from '../ApplicationCore/Services/ChatService';
-
 class ApplicationCore {
     private chatService: ChatService;
-
     constructor(connector: IGenAIConnector) {
         this.chatService = new ChatService(connector);
     }

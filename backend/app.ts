@@ -4,6 +4,8 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import GeminiConnector from './Infrastructure/Connectors/GeminiConnector';
 import AppCore from './ApplicationCore/AppCore';
+import connectMongoDBSession from 'connect-mongodb-session';
+
 
 declare module 'express-session' {
     export interface SessionData {
@@ -16,6 +18,16 @@ var salt1 = bcrypt.genSaltSync();
 var salt2 = bcrypt.genSaltSync();
 var secret = bcrypt.hashSync(salt1 + salt2, 10);
 const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
+
+const MongoDBStore = connectMongoDBSession(session);
+const mongoDbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI not found in environment variables. Using default URI: mongodb://localhost:27017');
+}
+const mongoDbStore = new MongoDBStore({
+    uri: mongoDbURI, // Replace with your MongoDB URI
+    collection: 'sessions' // Replace with your desired collection name
+});
 const app = express();
 app.use(express.json());
 app.use(cors({
@@ -24,13 +36,9 @@ app.use(cors({
 }));
 app.use(session({
     secret: secret,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { 
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none', // set to 'none' if your site is under a different domain
-        domain: 'your-site.com' // replace with your site's domain
-    }
+    store: mongoDbStore
 }));
 
 const port = process.env.PORT || 3000;

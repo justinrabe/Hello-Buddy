@@ -1,6 +1,6 @@
 import { IDatabaseConnector } from '../Interfaces/IDatabaseConnector';
 import { MongoClient } from 'mongodb';
-
+import MongoDbStore from 'connect-mongodb-session';
 export class MongoDBConnector implements IDatabaseConnector {
     private client: MongoClient;
 
