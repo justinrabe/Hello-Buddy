@@ -4,9 +4,8 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import GeminiConnector from './Infrastructure/Connectors/GeminiConnector';
 import AppCore from './ApplicationCore/AppCore';
-import { MongoDBConnector } from './Infrastructure/Connectors/MongoDBConnector';
 import connectMongoDBSession from 'connect-mongodb-session';
-import { connect } from 'http2';
+
 
 declare module 'express-session' {
     export interface SessionData {
@@ -21,16 +20,14 @@ var secret = bcrypt.hashSync(salt1 + salt2, 10);
 const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
 
 const MongoDBStore = connectMongoDBSession(session);
-
+const mongoDbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI not found in environment variables. Using default URI: mongodb://localhost:27017');
+}
 const mongoDbStore = new MongoDBStore({
-    uri: 'mongodb://localhost:27017', // Replace with your MongoDB URI
+    uri: mongoDbURI, // Replace with your MongoDB URI
     collection: 'sessions' // Replace with your desired collection name
 });
-
-const mongoDbConnector = new MongoDBConnector('mongodb://localhost:27017'); 
-(async () => {
-    await mongoDbConnector.connect();
-})();
 const app = express();
 app.use(express.json());
 app.use(cors({
