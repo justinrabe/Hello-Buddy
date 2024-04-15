@@ -21,8 +21,8 @@ if (!process.env.MONGODB_URI) {
     console.log('MongoDB URI not found in environment variables. Using default URI: mongodb://localhost:27017');
 }
 const mongoDbStore = new MongoDBStore({
-    uri: mongoDbURI, // Replace with your MongoDB URI
-    collection: 'sessions' // Replace with your desired collection name
+    uri: mongoDbURI,
+    collection: 'sessions',
 });
 const app = (0, express_1.default)();
 app.use(express_1.default.json());

@@ -21,12 +21,13 @@ const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localh
 
 const MongoDBStore = connectMongoDBSession(session);
 const mongoDbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+
 if (!process.env.MONGODB_URI) {
     console.log('MongoDB URI not found in environment variables. Using default URI: mongodb://localhost:27017');
 }
 const mongoDbStore = new MongoDBStore({
-    uri: mongoDbURI, // Replace with your MongoDB URI
-    collection: 'sessions' // Replace with your desired collection name
+    uri: mongoDbURI,
+    collection: 'sessions',
 });
 const app = express();
 app.use(express.json());
