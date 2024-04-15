@@ -9,11 +9,22 @@ const cors_1 = __importDefault(require("cors"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const GeminiConnector_1 = __importDefault(require("./Infrastructure/Connectors/GeminiConnector"));
 const AppCore_1 = __importDefault(require("./ApplicationCore/AppCore"));
+const MongoDBConnector_1 = require("./Infrastructure/Connectors/MongoDBConnector");
+const connect_mongodb_session_1 = __importDefault(require("connect-mongodb-session"));
 var appCores = {};
 var salt1 = bcrypt_1.default.genSaltSync();
 var salt2 = bcrypt_1.default.genSaltSync();
 var secret = bcrypt_1.default.hashSync(salt1 + salt2, 10);
 const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
+const MongoDBStore = (0, connect_mongodb_session_1.default)(express_session_1.default);
+const mongoDbStore = new MongoDBStore({
+    uri: 'mongodb://localhost:27017', // Replace with your MongoDB URI
+    collection: 'sessions' // Replace with your desired collection name
+});
+const mongoDbConnector = new MongoDBConnector_1.MongoDBConnector('mongodb://localhost:27017');
+(async () => {
+    await mongoDbConnector.connect();
+})();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
@@ -22,13 +33,9 @@ app.use((0, cors_1.default)({
 }));
 app.use((0, express_session_1.default)({
     secret: secret,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none', // set to 'none' if your site is under a different domain
-        domain: 'your-site.com' // replace with your site's domain
-    }
+    store: mongoDbStore
 }));
 const port = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Hello-Buddy backend is running!"));
