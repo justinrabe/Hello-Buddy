@@ -32,8 +32,8 @@ app.use((0, cors_1.default)({
 }));
 app.use((0, express_session_1.default)({
     secret: secret,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: mongoDbStore
 }));
 const port = process.env.PORT || 3000;
