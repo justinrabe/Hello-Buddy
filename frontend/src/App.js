@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Chat from '../src/Components/Chat'; // adjust the path if necessary
+import Chat from './Components/Chat';
 import LandingPage from './Components/LandingPage';
+import CookieContext from './Components/CookieContext';
 
 function App() {
+  const [cookie, setCookie] = useState(null);
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/chat" element={<Chat />} />
-        </Routes>
-      </Router>
+      <CookieContext.Provider value={{ cookie, setCookie }}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/chat" element={<Chat />} />
+          </Routes>
+        </Router>
+      </CookieContext.Provider>
     </div>
   );
 }
