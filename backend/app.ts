@@ -17,7 +17,7 @@ var appCores : { [key: string]: AppCore } = {};
 var salt1 = bcrypt.genSaltSync();
 var salt2 = bcrypt.genSaltSync();
 var secret = bcrypt.hashSync(salt1 + salt2, 10);
-const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
+const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app';
 
 const MongoDBStore = connectMongoDBSession(session);
 const mongoDbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
@@ -29,7 +29,17 @@ const mongoDbStore = new MongoDBStore({
     uri: mongoDbURI,
     collection: 'sessions',
 });
+
+
+
 const app = express();
+
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
+
 app.use(express.json());
 app.use(cors({
     origin: helloBuddyFrontEndUrl,
@@ -63,6 +73,8 @@ app.post('/start', async (req, res, next) => {
 
         req.session.persona = persona;
         appCores[req.sessionID] = appCore;
+
+        res.cookie('sessionID', req.sessionID, { httpOnly: true });
 
         res.json({ message: 'Chat started' });
         console.log("Chat started with persona: ", persona);

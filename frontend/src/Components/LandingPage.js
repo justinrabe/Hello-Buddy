@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './LandingPage.css';
@@ -8,9 +8,8 @@ const LandingPage = () => {
     axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
-    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
-    const helloBuddyFrontendUrl = process.env.PUBLIC_URL || 'http://localhost:3001';
-    console.log(`Hello Buddy frontend URL: ${helloBuddyFrontendUrl}`)
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_URL || 'http://localhost:3000';
+    console.log(`Hello Buddy backend URL: ${helloBuddyBackendUrl}`);
     const startHelloBuddy = helloBuddyBackendUrl + '/start';
     const [activeButton, setActiveButton] = useState(null);
     console.log(`Start Hello Buddy URL: ${startHelloBuddy}`);
@@ -20,6 +19,8 @@ const LandingPage = () => {
         try {
             const res = await axios.post(startHelloBuddy, { persona: p }, { withCredentials: true });
             context.setCookie(res.headers['set-cookie']);
+            console.log(`Received response: ${res}`);
+            console.log(`Received response: ${res.headers}`);
             console.log(`Received response: ${res.data}`);
         }
 
@@ -29,6 +30,10 @@ const LandingPage = () => {
         
         navigate('/chat');
     }
+
+    useEffect(() => {
+        console.log(`Cookie: ${context.cookie}`);
+      }, [context.cookie]);
 
     return (
         <div className="landing-page">
