@@ -49,7 +49,11 @@ app.use(session({
     secret: secret,
     resave: false,
     saveUninitialized: false,
-    store: mongoDbStore
+    store: mongoDbStore,
+    cookie: {
+        secure: true,
+        sameSite: 'none'
+    }
 }));
 
 const port = process.env.PORT || 3000;
