@@ -39,7 +39,11 @@ app.use((0, express_session_1.default)({
     secret: secret,
     resave: false,
     saveUninitialized: false,
-    store: mongoDbStore
+    store: mongoDbStore,
+    cookie: {
+        secure: true,
+        sameSite: 'none'
+    }
 }));
 const port = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Hello-Buddy backend is running!"));
