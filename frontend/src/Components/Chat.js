@@ -7,7 +7,7 @@ const Chat = () => {
     const context = useContext(CookieContext); 
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_URL || 'http://localhost:3000';
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
     const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
     console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
     const sendMessage = async () => {

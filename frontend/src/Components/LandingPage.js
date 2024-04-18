@@ -8,7 +8,7 @@ const LandingPage = () => {
     axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
-    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_URL || 'http://localhost:3000';
+    const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
     console.log(`Hello Buddy backend URL: ${helloBuddyBackendUrl}`);
     const startHelloBuddy = helloBuddyBackendUrl + '/start';
     const [activeButton, setActiveButton] = useState(null);
