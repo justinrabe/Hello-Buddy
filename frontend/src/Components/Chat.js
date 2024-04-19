@@ -1,12 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
-import CookieContext from './CookieContext';
 const Chat = () => {
-    const context = useContext(CookieContext); 
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const location = useLocation();
+    const persona = location.state.persona;
+
     const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
     const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
     console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
@@ -16,11 +18,7 @@ const Chat = () => {
         setMessage('Sending...');
         try {
             console.log(`Sending message: ${message}`);
-            console.log(`Cookie: ${context.cookie}`);
-            const res = await axios.post(helloBuggyMessageUrl, { prompt: message },{ 
-                withCredentials: true,
-                headers: { 'Cookie': context.cookie }
-            });
+            const res = await axios.post(helloBuggyMessageUrl, { prompt: message, persona: persona },{ withCredentials: true });
             console.log(`Received response: ${res.data}`);
             const data = await res.data;
             setMessages(prevMessages => [...prevMessages, { type: 'received', content: data }]);
@@ -30,10 +28,6 @@ const Chat = () => {
             setMessage('Uh oh! cannot contact Buddy.');
         }
     };
-
-    useEffect(() => {
-        console.log(`Cookie: ${context.cookie}`);
-      }, [context.cookie]);
 
     return (
         <div style={{ 
