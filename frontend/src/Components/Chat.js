@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const location = useLocation();
+    const persona = location.state.persona;
+
     const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
     const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
     console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
@@ -14,7 +18,7 @@ const Chat = () => {
         setMessage('Sending...');
         try {
             console.log(`Sending message: ${message}`);
-            const res = await axios.post(helloBuggyMessageUrl, { prompt: message },{ withCredentials: true });
+            const res = await axios.post(helloBuggyMessageUrl, { prompt: message, persona: persona },{ withCredentials: true });
             console.log(`Received response: ${res.data}`);
             const data = await res.data;
             setMessages(prevMessages => [...prevMessages, { type: 'received', content: data }]);
