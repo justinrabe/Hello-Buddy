@@ -4,9 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const express_session_1 = __importDefault(require("express-session"));
 const cors_1 = __importDefault(require("cors"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const GeminiConnector_1 = __importDefault(require("./Infrastructure/Connectors/GeminiConnector"));
 const AppCore_1 = __importDefault(require("./ApplicationCore/AppCore"));
 const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
@@ -16,25 +14,12 @@ personas.forEach(async (persona) => {
     await appCore.startChat(persona);
     appCores[persona] = appCore;
 });
-var salt1 = bcrypt_1.default.genSaltSync();
-var salt2 = bcrypt_1.default.genSaltSync();
-var secret = bcrypt_1.default.hashSync(salt1 + salt2, 10);
-const helloBuddyFrontEndUrl = 'http://localhost:3001';
+const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     origin: helloBuddyFrontEndUrl,
     credentials: true
-}));
-app.use((0, express_session_1.default)({
-    secret: secret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none', // set to 'none' if your site is under a different domain
-        domain: 'your-site.com' // replace with your site's domain
-    }
 }));
 const port = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Hello-Buddy backend is running!"));

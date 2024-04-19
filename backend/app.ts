@@ -1,15 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
-import session from 'express-session';
 import cors from 'cors';
-import bcrypt from 'bcrypt';
 import GeminiConnector from './Infrastructure/Connectors/GeminiConnector';
 import AppCore from './ApplicationCore/AppCore';
-
-declare module 'express-session' {
-    export interface SessionData {
-      persona?: string;
-    }
-  }
 
 const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
 
@@ -21,25 +13,12 @@ personas.forEach(async persona => {
     appCores[persona] = appCore;
 });
 
-var salt1 = bcrypt.genSaltSync();
-var salt2 = bcrypt.genSaltSync();
-var secret = bcrypt.hashSync(salt1 + salt2, 10);
-const helloBuddyFrontEndUrl = 'http://localhost:3001';
+const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
 const app = express();
 app.use(express.json());
 app.use(cors({
     origin: helloBuddyFrontEndUrl,
     credentials: true
-}));
-app.use(session({
-    secret: secret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { 
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none', // set to 'none' if your site is under a different domain
-        domain: 'your-site.com' // replace with your site's domain
-    }
 }));
 
 const port = process.env.PORT || 3000;
