@@ -5,11 +5,32 @@ body, html {
 
 .landing-page {
     background-color: #E0D6C2;
-    height: auto;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-page .button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .landing-page button {
     border: none;
     background: transparent;
+    padding: 20px; /* Increase button size */
+}
+
+.landing-page p {
+    font-size: 100px;
+    text-align: center;
+}
+
+.landing-page .logo-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 800px;
 }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chat from './Components/Chat';
 import LandingPage from './Components/LandingPage';
 import CookieContext from './Components/CookieContext';
-
+import './App.css';
 function App() {
   const [cookie, setCookie] = useState(null);
   return (

@@ -37,22 +37,26 @@ const LandingPage = () => {
 
     return (
         <div className="landing-page">
-            {personas.map((persona, index) => (
-                <button
-                    key={index}
-                    onMouseEnter={() => setActiveButton(persona)}
-                    onMouseLeave={() => setActiveButton(null)}
-                    onClick={() => {
-                        setActiveButton(persona);
-                        startChat(persona);
-                    }}
-                >
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
-                        alt={persona}
-                    />
-                </button>
-            ))}
+            <img className="logo-container" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Hello Buddy!" />
+            <p>Choose a Buddy you want to talk to.</p>
+            <div className ="button-container">
+                {personas.map((persona, index) => (
+                    <button
+                        key={index}
+                        onMouseEnter={() => setActiveButton(persona)}
+                        onMouseLeave={() => setActiveButton(null)}
+                        onClick={() => {
+                            setActiveButton(persona);
+                            startChat(persona);
+                        }}
+                    >
+                        <img
+                            src={`${process.env.PUBLIC_URL}/images/${persona}${persona === activeButton ? '_Profile_Hover' : '_Profile_Default'}.png`}
+                            alt={persona}
+                        />
+                    </button>
+                ))}
+                </div>
             <Link to="/chat"></Link>
         </div>
     );
