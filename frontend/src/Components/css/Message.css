@@ -1,0 +1,23 @@
+.message-container {
+    text-align: left;
+}
+
+.message-container.sent {
+    text-align: right;
+}
+
+.message {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    background: #f0f0f0;
+    color: black;
+    word-wrap: break-word;
+    max-width: 50%;
+}
+
+.message.sent {
+    background: #0084ff;
+    color: white;
+}

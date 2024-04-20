@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
+import './css/Chat.css';
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -30,15 +31,13 @@ const Chat = () => {
     };
 
     return (
-        <div style={{ 
-            display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#749977' 
-            }}>
-            <div style={{ overflowY: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#749977'  }}>
+        <div className="chat-container">
+            <div className="messages-container">
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} />
                 ))}
             </div>
-            <div style={{ display: 'flex', padding: '10px', backgroundColor: '#749977'  }}>
+            <div className="input-container">
                 <input 
                     type="text" 
                     value={message} 
@@ -46,10 +45,10 @@ const Chat = () => {
                     onKeyDown = {e => {
                         if (e.key === 'Enter') {
                             sendMessage();
-                            e.preventDefault(); // Prevents the addition of a new line in the input after pressing 'Enter'
+                            e.preventDefault();
                         }
                     }}
-                    style={{ flexGrow: 1, marginRight: '10px' }}
+                    className="input-field"
                 />
                 <SendMessageButton onClick={sendMessage} />
             </div>

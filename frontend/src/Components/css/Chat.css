@@ -1,0 +1,25 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #749977;
+}
+
+.messages-container {
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #749977;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #749977;
+}
+
+.input-field {
+    flex-grow: 1;
+    margin-right: 10px;
+}
