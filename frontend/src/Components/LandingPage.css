@@ -20,17 +20,20 @@ body, html {
 .landing-page button {
     border: none;
     background: transparent;
-    padding: 20px; /* Increase button size */
+    padding: 20px;
 }
 
 .landing-page p {
-    font-size: 100px;
+    font-size: 40px;
     text-align: center;
+    font-weight: 400;
+    line-height: 50px;
 }
 
 .landing-page .logo-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 800px;
+    width: 631px;
+    margin-top: 288px;
 }

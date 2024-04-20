@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LandingPage.css';
+import logo from '../images/Logo.png';
 const LandingPage = () => {
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
@@ -12,7 +13,7 @@ const LandingPage = () => {
 
     return (
         <div className="landing-page">
-            <img className="logo-container" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Hello Buddy!" />
+            <img className="logo-container" src={logo} alt="Hello Buddy!" />
             <p>Choose a Buddy you want to talk to.</p>
             <div className ="button-container">
                 {personas.map((persona, index) => (
