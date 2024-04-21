@@ -50,7 +50,7 @@ const Chat = () => {
                     }}
                     className="input-field"
                 />
-                <SendMessageButton onClick={sendMessage} />
+                <SendMessageButton onClick={sendMessage} p={location.state.persona} />
             </div>
         </div>
     );

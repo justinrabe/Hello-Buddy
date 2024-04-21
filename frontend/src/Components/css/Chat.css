@@ -17,6 +17,7 @@
     display: flex;
     padding: 10px;
     background-color: #749977;
+    border-radius: 100px;
 }
 
 .input-field {

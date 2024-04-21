@@ -1,5 +1,6 @@
 .message-container {
     text-align: left;
+    font-size: 30px;
 }
 
 .message-container.sent {
