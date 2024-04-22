@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
+import 'bootstrap';
 import './css/Chat.css';
 const Chat = () => {
     const [message, setMessage] = useState('');

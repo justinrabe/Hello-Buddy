@@ -1,5 +1,5 @@
 import './css/Message.css';
-
+import 'bootstrap';
 const Message = ({ msg }) => (
     <div className={`message-container ${msg.type}`}>
         <div className={`message ${msg.type}`}>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './css/LandingPage.css';
 import logo from '../images/Logo.png';
+import 'bootstrap';
 const LandingPage = () => {
     const navigate = useNavigate();
     const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];

@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/SendMessage.css';
+import 'bootstrap';
 const SendMessageButton = ({ onClick, p }) => {
     const buddy = p || 'PawPrint';
     return (

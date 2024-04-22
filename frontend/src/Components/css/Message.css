@@ -16,6 +16,8 @@
     color: black;
     word-wrap: break-word;
     max-width: 50%;
+    font-family: 'CustomFont',
+    sans-serif;
 }
 
 .message.sent {
