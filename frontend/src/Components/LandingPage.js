@@ -32,7 +32,7 @@ const LandingPage = () => {
                         />
                     </button>
                 ))}
-                </div>
+            </div>
             <Link to="/chat"></Link>
         </div>
     );
