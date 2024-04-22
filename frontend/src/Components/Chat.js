@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
+import logo from '../images/Logo.png';
 import 'bootstrap';
 import './css/Chat.css';
 const Chat = () => {
@@ -33,6 +34,7 @@ const Chat = () => {
 
     return (
         <div className="chat-container">
+            <img className="logo-container" src={logo} alt="Hello Buddy!" />
             <div className="messages-container">
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} />

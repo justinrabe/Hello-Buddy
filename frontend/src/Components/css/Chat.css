@@ -1,8 +1,15 @@
 .chat-container {
     display: flex;
-    flex-direction: column;
     height: 100vh;
     background-color: #749977;
+    flex-direction: column;
+}
+
+.logo-container {
+    width: 631px; /* Adjust as needed */
+    height: auto; /* Keeps the aspect ratio */
+    margin-top: 50px;
+    align-self: center; /* Add this line */
 }
 
 .messages-container {
