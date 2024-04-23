@@ -52,8 +52,9 @@ const Chat = () => {
                         }
                     }}
                     className="input-field"
+                    placeholder="Type a message to talk to Buddy..."
                 />
-                <SendMessageButton onClick={sendMessage} p={location.state.persona} />
+                <SendMessageButton className="send-button" onClick={sendMessage} p={location.state.persona} />
             </div>
         </div>
     );

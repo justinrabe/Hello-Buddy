@@ -1,10 +1,16 @@
 .message-container {
     text-align: left;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .message-container.sent {
     text-align: right;
+}
+
+.message-text {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
 }
 
 .message {
@@ -16,10 +22,10 @@
     border-radius: 10px;
     margin: 5px 40px;
     background: rgba(255, 255, 255, 0.5); 
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 0, 0, .5);
     color: black;
     word-wrap: break-word;
-    max-width: 50%;
+    max-width: 75%;
     font-family: 'CustomFont',
     sans-serif;
 }

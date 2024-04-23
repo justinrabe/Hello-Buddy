@@ -6,6 +6,7 @@ const SendMessageButton = ({ onClick, p }) => {
     return (
         <button className="send-button" onClick={onClick}>
             <img
+                className="send-button-image"
                 src={`${process.env.PUBLIC_URL}/images/${buddy}_Send.png`}
                 alt={buddy}
             />
