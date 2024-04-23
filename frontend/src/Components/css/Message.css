@@ -12,7 +12,8 @@
     padding: 10px;
     border-radius: 10px;
     margin: 5px;
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.5); 
+    border: 2px solid rgba(0, 0, 0, 0.5);
     color: black;
     word-wrap: break-word;
     max-width: 50%;
@@ -21,6 +22,5 @@
 }
 
 .message.sent {
-    background: #0084ff;
-    color: white;
+    color: black;
 }

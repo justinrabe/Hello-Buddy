@@ -1,6 +1,8 @@
 .chat-container {
     display: flex;
     height: 100vh;
+    padding-left: 100px;
+    padding-right: 100px;
     flex-direction: column;
 }
 
