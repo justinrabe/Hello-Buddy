@@ -37,7 +37,7 @@ const Chat = () => {
             <img className="logo-container" src={logo} alt="Hello Buddy!" />
             <div className="messages-container">
                 {messages.map((msg, index) => (
-                    <Message key={index} msg={msg} />
+                    <Message key={index} msg={msg} persona={persona}/>
                 ))}
             </div>
             <div className="input-container">
