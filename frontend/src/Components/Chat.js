@@ -33,7 +33,7 @@ const Chat = () => {
     };
 
     return (
-        <div className="chat-container">
+        <div className={`chat-container ${persona}`}>
             <img className="logo-container" src={logo} alt="Hello Buddy!" />
             <div className="messages-container">
                 {messages.map((msg, index) => (

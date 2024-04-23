@@ -1,8 +1,28 @@
 .chat-container {
     display: flex;
     height: 100vh;
-    background-color: #749977;
     flex-direction: column;
+}
+
+.chat-container.StinkyBoy {
+    background-color: #CB99AB;
+}
+
+.chat-container.Maton {
+    background-color: #97ADD0;
+}
+
+.chat-container.MeYo {
+    background-color: #749977;
+}
+
+.chat-container.Buggy {
+    background-color: #9B86AC;
+}
+
+.chat-container.Cocopups {
+    background-color: #E58161;
+
 }
 
 .logo-container {
