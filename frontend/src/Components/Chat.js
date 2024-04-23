@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import Message from './Message';
 import SendMessageButton from './SendMessage';
@@ -34,7 +34,9 @@ const Chat = () => {
 
     return (
         <div className={`chat-container ${persona}`}>
-            <img className="logo-container" src={logo} alt="Hello Buddy!" />
+            <Link to="/" className="logo-link">
+                <img className="logo-container" src={logo} alt="Hello Buddy!" />
+            </Link>
             <div className="messages-container">
                 {messages.map((msg, index) => (
                     <Message key={index} msg={msg} persona={persona}/>

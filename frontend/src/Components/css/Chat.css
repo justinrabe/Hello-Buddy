@@ -28,11 +28,16 @@
 
 }
 
+.logo-link {
+    display: block;
+    text-align: center;
+}
+
 .logo-container {
-    width: 631px; /* Adjust as needed */
-    height: auto; /* Keeps the aspect ratio */
+    width: 631px;
+    height: auto;
     margin-top: 50px;
-    align-self: center; /* Add this line */
+    align-self: center;
 }
 
 .messages-container {
