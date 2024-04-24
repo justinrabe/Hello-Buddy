@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './css/Sidebar.css'
 function Sidebar() {
     const [show, setShow] = useState(false);
@@ -22,11 +23,11 @@ function Sidebar() {
                 {show && (
                     <div className="sidebar">
                         <ul>
-                            <li>Home</li>
-                            <li>About Us</li>
-                            <li>Source Code</li>
-                            <li>Hackathon</li>
-                            <li>Gemini</li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">About Us</Link></li>
+                            <li><Link to="/">Source Code</Link></li>
+                            <li><Link to="/">Hackathon</Link></li>
+                            <li><Link to="/">Gemini</Link></li>
                         </ul>
                     </div>
                 )}

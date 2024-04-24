@@ -9,12 +9,10 @@ function App() {
   return (
     <div className="App">
         <Sidebar/>
-        <Router>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/chat" element={<Chat />} />
-            </Routes>
-        </Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/chat" element={<Chat />} />
+        </Routes>
     </div>
   );
 }
