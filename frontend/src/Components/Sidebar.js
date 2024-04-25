@@ -4,13 +4,19 @@ import './css/Sidebar.css'
 function Sidebar() {
     const [show, setShow] = useState(false);
 
-    const handleToggle = () => setShow(!show);
+    const handleClick = () => {
+        setShow(!show);
+    };
+
+    const handleLinkClick = () => {
+        setShow(false);
+    };
 
     return (
         <>
             <div className="sidebar-container">
                 <button 
-                onClick={handleToggle}
+                onClick={handleClick}
                 className={show ? "button-open" : "button-default"}
                 >
                     <img
@@ -23,11 +29,11 @@ function Sidebar() {
                 {show && (
                     <div className="sidebar">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/">About Us</Link></li>
-                            <li><Link to="/">Source Code</Link></li>
-                            <li><Link to="/">Hackathon</Link></li>
-                            <li><Link to="/">Gemini</Link></li>
+                        <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
+                            <li><Link to="/about" onClick={handleLinkClick}>About Us</Link></li>
+                            <li><a href="https://github.com/justinrabe/Hello-Buddy" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Source Code</a></li>
+                            <li><a href="https://googleai.devpost.com/" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Hackathon</a></li>
+                            <li><a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Gemini</a></li>
                         </ul>
                     </div>
                 )}
