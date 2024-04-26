@@ -1,4 +1,12 @@
 .about-container {
-    font-family: 'CustomFont',
-    sans-serif;
+    font-family: 'CustomFont', sans-serif;
+}
+.about-subtitle {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.about-content {
+    margin-right: 100px;
+    margin-left: 100px;
 }
