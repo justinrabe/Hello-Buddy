@@ -16,6 +16,8 @@ Clone the repository:
 git clone https://github.com/yourusername/hello-buddy.git
 ```
 
+## Usage
+
 go to backend/Infrastructure/Connectors/GeminiConnector.ts. You will need to generate your own Google AI Studio API Key: https://aistudio.google.com/app/apikey
 
 After you generate your API Key, save it as an environment variable.
