@@ -10,3 +10,28 @@
     margin-right: 100px;
     margin-left: 100px;
 }
+
+.buddy-container {
+    background-image: url('../../../public/images/Rainbow_Gradient.png');
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 50px;
+    border: 2px solid black;
+}
+
+.buddy-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.buddy-column{
+    text-align: center;
+}
+
+.buddy-name{
+
+}
+
+.buddy-image{
+
+}

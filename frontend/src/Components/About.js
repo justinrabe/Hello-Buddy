@@ -2,6 +2,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import logo from '../images/Logo.png';
+import stinkyBoy from '../images/StinkyBoy.png';
+import maton from '../images/Maton.png';
+import cocopups from '../images/Cocopups.png';
+import meyo from '../images/Me-Yo.png';
+import buggy from '../images/Bugs.png';
 import './css/About.css';
 function About() {
     return (
@@ -25,6 +30,31 @@ function About() {
             will bring them to virtual life, courtesy of Google Gemini. Currently, we've personally designed the Buddy icons, with plans to introduce customization features, allowing users to recreate their pets faithfully and engage in meaningful conversations with them. 
 
             </h2>
+            <div className="buddy-container">
+                <h1 className="about-subtitle">Meet the furry friends that inspired the Buddies!</h1>
+                <div className="buddy-row">
+                    <div className="buddy-column">
+                        <img className="buddy-image" src={stinkyBoy} alt="Buddy" />
+                        <h2 className="buddy-name">StinkyBoy</h2>
+                    </div>
+                    <div className="buddy-column">
+                        <img className="buddy-image" src={maton} alt="Buddy" />
+                        <h2 className="buddy-name">Maton</h2>
+                    </div>
+                    <div className="buddy-column">
+                        <img className="buddy-image" src={cocopups} alt="Buddy" />
+                        <h2 className="buddy-name">Cocopups</h2>
+                    </div>
+                    <div className="buddy-column">
+                        <img className="buddy-image" src={meyo} alt="Buddy" />
+                        <h2 className="buddy-name">Me-Yo</h2>
+                    </div>
+                    <div className="buddy-column">
+                        <img className="buddy-image" src={buggy}alt="Buddy" />
+                        <h2 className="buddy-name">Buggy</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
