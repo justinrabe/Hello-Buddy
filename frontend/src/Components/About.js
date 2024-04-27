@@ -55,6 +55,9 @@ function About() {
                     </div>
                 </div>
             </div>
+            <footer className="footer-container">
+                Powered by Google Gemini
+            </footer>
         </div>
     );
 }
