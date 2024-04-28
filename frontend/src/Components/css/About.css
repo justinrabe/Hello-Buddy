@@ -26,12 +26,17 @@
 }
 .buddy-column{
     text-align: center;
+    margin: 0 10px;
 }
 
 .buddy-name{
     font-weight: bold;
 }
 
+.buddy-description{
+    max-width: 200px;
+    word-wrap: break-word;
+}
 .buddy-image{
 
 }
