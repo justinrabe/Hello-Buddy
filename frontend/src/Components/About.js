@@ -36,22 +36,32 @@ function About() {
                     <div className="buddy-column">
                         <img className="buddy-image" src={stinkyBoy} alt="Buddy" />
                         <h2 className="buddy-name">StinkyBoy</h2>
+                        <h3 className="buddy-description">West Highland White Terrier Mix</h3>
+                        <h3 className="buddy-description">2006-2017</h3>
                     </div>
                     <div className="buddy-column">
                         <img className="buddy-image" src={maton} alt="Buddy" />
                         <h2 className="buddy-name">Maton</h2>
+                        <h3 className="buddy-description">Poodle Mix</h3>
+                        <h3 className="buddy-description">2009-2022</h3>
                     </div>
                     <div className="buddy-column">
                         <img className="buddy-image" src={cocopups} alt="Buddy" />
                         <h2 className="buddy-name">Cocopups</h2>
+                        <h3 className="buddy-description">Jack Russell Terrier Mix</h3>
+                        <h3 className="buddy-description">2009-2022</h3>
                     </div>
                     <div className="buddy-column">
                         <img className="buddy-image" src={meyo} alt="Buddy" />
                         <h2 className="buddy-name">Me-Yo</h2>
+                        <h3 className="buddy-description">Yorkshire Terrier</h3>
+                        <h3 className="buddy-description">2012</h3>
                     </div>
                     <div className="buddy-column">
                         <img className="buddy-image" src={buggy}alt="Buddy" />
                         <h2 className="buddy-name">Buggy</h2>
+                        <h3 className="buddy-description">"Big Corgi" Mix</h3>
+                        <h3 className="buddy-description">2023</h3>
                     </div>
                 </div>
             </div>
