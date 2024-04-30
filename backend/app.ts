@@ -13,7 +13,7 @@ personas.forEach(async persona => {
     appCores[persona] = appCore;
 });
 
-const helloBuddyFrontEndUrl = 'https://hello-buddy.vercel.app' || 'http://localhost:3001';
+const helloBuddyFrontEndUrl = 'https://hello-buddy.app';
 const app = express();
 app.use(express.json());
 app.use(cors({
