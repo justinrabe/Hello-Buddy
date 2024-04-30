@@ -1,6 +1,6 @@
 # Hello Buddy!
 
-Hello Buddy! is a full stack web app that allows users to interact with virtual representations of their pets.
+Hello Buddy! is a full stack web app that allows users to interact with virtual representations of their pets. 
 
 ## Features
 
