@@ -21,7 +21,7 @@ const Chat = () => {
         setMessage('Sending...');
         try {
             console.log(`Sending message: ${message}`);
-            const res = await axios.post(helloBuggyMessageUrl, { prompt: message, persona: persona },{ withCredentials: true });
+            const res = await axios.post(helloBuggyMessageUrl, { prompt: message, persona: persona });
             console.log(`Received response: ${res.data}`);
             const data = await res.data;
             setMessages(prevMessages => [...prevMessages, { type: 'received', content: data }]);
