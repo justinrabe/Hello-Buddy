@@ -11,7 +11,7 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const location = useLocation();
     const persona = location.state.persona;
-
+    console.log(`Chatting with ${persona}`);
     const helloBuddyBackendUrl = process.env.REACT_APP_HELLO_BUDDY_BACKEND_URL || 'http://localhost:3000';
     const helloBuggyMessageUrl = helloBuddyBackendUrl + '/message';
     console.log(`Hello Buggy Message URL: ${helloBuggyMessageUrl}`);
