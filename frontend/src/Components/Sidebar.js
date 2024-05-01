@@ -29,11 +29,11 @@ function Sidebar() {
                 {show && (
                     <div className="sidebar">
                         <ul>
-                        <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
-                            <li><Link to="/about" onClick={handleLinkClick}>About Us</Link></li>
-                            <li><a href="https://github.com/justinrabe/Hello-Buddy" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Source Code</a></li>
-                            <li><a href="https://googleai.devpost.com/" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Hackathon</a></li>
-                            <li><a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Gemini</a></li>
+                            <li><Link to="/" onClick={handleLinkClick}>HOME</Link></li>
+                            <li><Link to="/about" onClick={handleLinkClick}>ABOUT US</Link></li>
+                            <li><a href="https://github.com/justinrabe/Hello-Buddy" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>SOURCE CODE</a></li>
+                            <li><a href="https://googleai.devpost.com/" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>HACKATHON</a></li>
+                            <li><a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>GEMINI</a></li>
                         </ul>
                     </div>
                 )}

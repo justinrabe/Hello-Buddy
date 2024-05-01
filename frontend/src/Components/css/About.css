@@ -30,7 +30,9 @@
 }
 
 .buddy-name{
-    font-weight: bold;
+    font-family: 'BabyDoll', sans-serif;
+    font-size: 35px;
+    text-align: center;
 }
 
 .buddy-description{
