@@ -25,6 +25,10 @@ function Purpose() {
             will bring them to virtual life, courtesy of Google Gemini. Currently, we've personally designed the Buddy icons, with plans to introduce customization features, allowing users to recreate their pets faithfully and engage in meaningful conversations with them. 
 
             </h2>
+
+            <div className="thankyou-container">
+                <img className="thankyou-image" src={`${process.env.PUBLIC_URL}/images/ThankYou.png`} alt="image" />
+            </div>
             <footer className="footer-container">
                 Powered by Google Gemini
             </footer>

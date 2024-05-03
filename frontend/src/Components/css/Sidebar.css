@@ -9,6 +9,7 @@
     border: none;
     outline: none;
     z-index: 3;
+    padding-left: 25px;
 }
 
 .button-open {
@@ -17,16 +18,17 @@
     border: none;
     outline: none;
     z-index: 3;
+    padding-left: 25px;
 }
 
 .sidebar {
     position: absolute;
-    width: 300px;
+    width: 400px;
     height: 100%;
     left: 0;
     top: 0;
     background-color: #F0EDE3;
-    padding: 20px;
+    padding: 50px;
     overflow: auto;
     font-size: 40px;
     font-family: 'CustomFont', sans-serif; 
@@ -39,6 +41,10 @@
     list-style-type: none;
     padding-left: 0;
     padding-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
 }
 
 .sidebar a, .sidebar a:visited, .sidebar a:active, .sidebar a:focus {

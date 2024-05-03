@@ -6,6 +6,14 @@ import SendMessageButton from './SendMessage';
 import logo from '../images/Logo.png';
 import 'bootstrap';
 import './css/Chat.css';
+
+const personaColorMap = {
+    'StinkyBoy': '#702540',
+    'Maton': '#2A4570',
+    'Cocopups': '#8C452F',
+    'MeYo': '#154B1A',
+    'Buggy': '#402158'
+}
 const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -54,6 +62,7 @@ const Chat = () => {
                         }
                     }}
                     className="input-field"
+                    style={{borderColor: personaColorMap[persona]}}
                     placeholder="Type a message to talk to Buddy..."
                 />
                 <SendMessageButton className="send-button" onClick={sendMessage} p={location.state.persona} />
