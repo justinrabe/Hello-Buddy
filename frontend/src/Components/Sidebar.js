@@ -30,7 +30,8 @@ function Sidebar() {
                     <div className="sidebar">
                         <ul>
                             <li><Link to="/" onClick={handleLinkClick}>HOME</Link></li>
-                            <li><Link to="/about" onClick={handleLinkClick}>ABOUT US</Link></li>
+                            <li><Link to="/meet" onClick={handleLinkClick}>MEET THE BUDDIES</Link></li>
+                            <li><Link to="/purpose" onClick={handleLinkClick}>PURPOSE</Link></li>
                             <li><a href="https://github.com/justinrabe/Hello-Buddy" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>SOURCE CODE</a></li>
                             <li><a href="https://googleai.devpost.com/" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>HACKATHON</a></li>
                             <li><a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>GEMINI</a></li>

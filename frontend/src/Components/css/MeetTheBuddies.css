@@ -1,14 +1,47 @@
-.about-container {
+.meet-container {
     font-family: 'CustomFont', sans-serif;
 }
-.about-subtitle {
+
+.meet-subtitle {
     margin-top: 10px;
     text-align: center;
 }
 
-.about-content {
+.meet-subtitle2 {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.meet-content {
     margin-right: 100px;
     margin-left: 100px;
+}
+
+.personality-row {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+.persona-image {
+    width: 10%;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+.persona-description {
+    width: 90%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 50px;
+    font-size: 35px;
+    border: 5px solid #702540;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .buddy-container {
