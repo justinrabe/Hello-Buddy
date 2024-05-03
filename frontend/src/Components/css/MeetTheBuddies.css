@@ -48,8 +48,8 @@
     background-image: url('../../../public/images/Rainbow_Gradient.png');
     margin-left: 50px;
     margin-right: 50px;
-    border-radius: 50px;
-    border: 5px solid black;
+    border-radius: 20px;
+    border: 5px solid #614918;
 }
 
 .buddy-row {
