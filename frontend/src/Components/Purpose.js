@@ -27,7 +27,7 @@ function Purpose() {
             </h2>
 
             <div className="thankyou-container">
-                <img className="thankyou-image" src={`${process.env.PUBLIC_URL}/images/ThankYou.png`} alt="image" />
+                <img className="thankyou-image" src={`${process.env.PUBLIC_URL}/images/ThankYou.png`} alt="dummy" />
             </div>
             <footer className="footer-container">
                 Powered by Google Gemini
