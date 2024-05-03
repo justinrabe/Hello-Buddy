@@ -3,7 +3,8 @@
 }
 
 .meet-subtitle {
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
@@ -49,6 +50,7 @@
     margin-left: 50px;
     margin-right: 50px;
     border-radius: 20px;
+    padding-bottom: 20px;
     border: 5px solid #614918;
 }
 
