@@ -8,7 +8,7 @@ export class MessageRepository implements IRepository<Message> {
     constructor() {
         this.connector = new MongoDBConnector(process.env.MONGODB_URI ?? '');
     }
-    create(entity: Message): Promise<Message> {
+    create(entity: Message): Promise<string> {
         throw new Error('Method not implemented.');
     }
     getById(id: number): Promise<Message | null> {

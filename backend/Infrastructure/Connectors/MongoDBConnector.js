@@ -7,6 +7,9 @@ class MongoDBConnector {
         this.url = url;
         this.client = new mongodb_1.MongoClient(this.url);
     }
+    getClient() {
+        return this.client;
+    }
     async connect() {
         await this.client.connect();
     }

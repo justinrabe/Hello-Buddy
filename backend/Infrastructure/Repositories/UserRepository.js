@@ -5,10 +5,14 @@ const MongoDBConnector_1 = require("../Connectors/MongoDBConnector");
 class UserRepository {
     constructor() {
         var _a;
-        this.connector = new MongoDBConnector_1.MongoDBConnector((_a = process.env.MONGODB_URI) !== null && _a !== void 0 ? _a : '');
+        this.connector = new MongoDBConnector_1.MongoDBConnector((_a = process.env.MONGODB_URI) !== null && _a !== void 0 ? _a : 'mongodb://localhost:27017');
+        this.connector.connect();
     }
-    create(entity) {
-        throw new Error('Method not implemented.');
+    async create(entity) {
+        const db = this.connector.getClient().db('hello-buddy-devf');
+        const collection = db.collection('Users');
+        const result = await collection.insertOne(entity);
+        return result.insertedId.toString();
     }
     getById(id) {
         throw new Error('Method not implemented.');

@@ -7,6 +7,11 @@ export class MongoDBConnector implements IDatabaseConnector {
     constructor(private url: string) {
         this.client = new MongoClient(this.url);
     }
+
+    public getClient() {
+        return this.client;
+    }
+
     async connect(): Promise<void> {
         await this.client.connect();
     }

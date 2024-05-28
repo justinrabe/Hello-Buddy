@@ -6,10 +6,14 @@ export class UserRepository implements IRepository<User> {
     private connector: MongoDBConnector;
 
     constructor() {
-        this.connector = new MongoDBConnector(process.env.MONGODB_URI ?? '');
+        this.connector = new MongoDBConnector(process.env.MONGODB_URI ?? 'mongodb://localhost:27017');
+        this.connector.connect();
     }
-    create(entity: User): Promise<User> {
-        throw new Error('Method not implemented.');
+    async create(entity: User): Promise<string> {
+        const db = this.connector.getClient().db('hello-buddy-devf');
+        const collection = db.collection('Users');
+        const result = await collection.insertOne(entity);
+        return result.insertedId.toString();
     }
     getById(id: number): Promise<User | null> {
         throw new Error('Method not implemented.');
