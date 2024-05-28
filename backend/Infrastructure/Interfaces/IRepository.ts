@@ -4,4 +4,6 @@ export interface IRepository<T> {
     getAll(): Promise<T[]>;
     update(id: number, entity: T): Promise<void>;
     delete(id: number): Promise<void>;
+    findMultipleBy(key: keyof T, value: any): Promise<T[]>;
+    FindOneBy(key: keyof T, value: any): Promise<T | null>;
 }

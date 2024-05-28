@@ -10,10 +10,30 @@ export class UserRepository implements IRepository<User> {
         this.connector.connect();
     }
     async create(entity: User): Promise<string> {
-        const db = this.connector.getClient().db('hello-buddy-devf');
+        const db = this.connector.getClient().db('hello-buddy-dev');
         const collection = db.collection('Users');
         const result = await collection.insertOne(entity);
         return result.insertedId.toString();
+    }
+    async FindOneBy(key: keyof User, value: any): Promise<User | null> {
+        const db = this.connector.getClient().db('hello-buddy-dev');
+        const collection = db.collection('Users');
+        const userDocument = await collection.findOne({ [key]: value });
+        if (userDocument) {
+            const user: User = {
+                id: userDocument._id.toString(),
+                email: userDocument.email,
+                password: userDocument.password,
+                createdAt: userDocument.createdAt,
+                updatedAt: userDocument.updatedAt
+            };
+            return user;
+        }
+    
+        return null;
+    }
+    async findMultipleBy(key: keyof User, value: any): Promise<User[]> {
+        throw new Error('Method not implemented.');
     }
     getById(id: number): Promise<User | null> {
         throw new Error('Method not implemented.');

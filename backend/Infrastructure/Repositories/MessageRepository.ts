@@ -23,5 +23,11 @@ export class MessageRepository implements IRepository<Message> {
     delete(id: number): Promise<void> {
         throw new Error('Method not implemented.');
     }
+    findMultipleBy(key: keyof Message, value: any): Promise<Message[]> {
+        throw new Error('Method not implemented.');
+    }
+    FindOneBy(key: keyof Message, value: any): Promise<Message | null> {
+        throw new Error('Method not implemented.');
+    }
 
 }
