@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import GeminiConnector from './Infrastructure/Connectors/GeminiConnector';
 import AppCore from './ApplicationCore/AppCore';
+import passport from './Infrastructure/Authentication/Passport';
 
 const personas = ['StinkyBoy', 'Maton', 'MeYo', 'Buggy', 'Cocopups'];
 
@@ -20,6 +21,9 @@ app.use(cors({
     origin: "*",
     credentials: true
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const port = process.env.PORT || 3000;
 
