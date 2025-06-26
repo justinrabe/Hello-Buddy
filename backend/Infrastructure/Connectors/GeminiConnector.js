@@ -6,7 +6,7 @@ const { GoogleGenerativeAI, history } = require("@google/generative-ai");
 class GeminiConnector {
     constructor() {
         this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_GENAI_KEY);
-        this.model = this.gemini.getGenerativeModel({ model: "gemini-1.0-pro" });
+        this.model = this.gemini.getGenerativeModel({ model: "gemini-2.0-flash" });
     }
     async startChat(persona) {
         const selectedPersona = Personas_1.personas.find(p => p.name === persona);
