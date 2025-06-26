@@ -10,7 +10,7 @@ class GeminiConnector implements IGenAIConnector {
 
     constructor( ) {
         this.gemini = new GoogleGenerativeAI( process.env.GOOGLE_GENAI_KEY );
-        this.model = this.gemini.getGenerativeModel ({ model: "gemini-1.0-pro" });
+        this.model = this.gemini.getGenerativeModel ({ model: "gemini-2.0-flash" });
     }
 
     async startChat(persona: string): Promise<any> {
